@@ -1,4 +1,4 @@
-AI Coding Assistant Agent 
+***AI Coding Assistant Agent***
 
 An intelligent tool-calling AI agent built with LangChain that can search the web, retrieve knowledge, generate structured coding assistance, and persist results locally.
 
@@ -10,9 +10,7 @@ LangChain
 
 OpenAI
 
-Why This Project?
-
-Most beginner AI projects only generate text.
+**Why This Project?**
 
 This project demonstrates:
 
@@ -26,13 +24,13 @@ Persistent storage
 
 Environment-based security
 
-Modular architecture
+**Modular architecture**
 
 This follows a real-world agent pattern:
 
 LLM + Tools + Validation + Persistence
 
-Features
+**Features**
 
 Coding assistance and summaries
 
@@ -48,7 +46,7 @@ Secure API key management using .env
 
 Modular and scalable design
 
-Architecture
+**Architecture**
 User Query
      ↓
 LangChain Agent
@@ -76,16 +74,16 @@ AI-Coding-Assistant/
 └── README.md
 Installation
 1. Clone Repository
-git clone https://github.com/your-username/AI-Coding-Assistant.git
+git clone https://github.com/Eamon2009/AI-Agent-plus.git
 cd AI-Coding-Assistant
 2. Create Virtual Environment
 
-Windows
+**Windows**
 
 python -m venv venv
 venv\Scripts\activate
 
-Linux / Mac
+**Linux / Mac**
 
 python3 -m venv venv
 source venv/bin/activate
@@ -99,7 +97,7 @@ Keeps system Python clean
 
 Makes the project reproducible
 
-Professional Python development always uses virtual environments.
+Python development always uses virtual environments.
 
 3. Install Dependencies
 
@@ -116,6 +114,7 @@ wikipedia
 Install:
 
 pip install -r requirements.txt
+
 4. Setup Environment Variables
 
 Create a .env file:
@@ -149,19 +148,30 @@ Generate structured output
 
 Save results to chathistory.txt
 
-Imports Overview
+**Imports Overview**
 main.py
 from dotenv import load_dotenv
+
 from pydantic import BaseModel
+
 from langchain_openai import ChatOpenAI
+
 from langchain_core.prompts import ChatPromptTemplate
+
 from langchain_core.output_parsers import PydanticOutputParser
+
 from langchain.agents import create_tool_calling_agent, AgentExecutor
+
 from sources import search_tool, wiki_tool, save_mth
+
 sources.py
+
 from langchain_community.utilities import WikipediaAPIWrapper
+
 from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun, Tool
+
 from datetime import datetime
+
 Example Output
 {
   topic: "Flask API",
@@ -169,7 +179,8 @@ Example Output
   sources: ["Wikipedia", "Web Search"],
   tool_used: ["search", "wiki"]
 }
-Future Improvements
+
+**Future Improvements**
 
 Conversation memory (LangChain Memory)
 
@@ -183,11 +194,9 @@ Multi-model support (OpenAI + Anthropic)
 
 Vector database integration
 
-Use Cases
+**Use Cases**
 
 Learning LangChain
-
-AI portfolio project
 
 Agent architecture reference
 
