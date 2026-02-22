@@ -1,72 +1,107 @@
-AI Coding Assistant Agent
+AI Coding Assistant Agent V2
 
-An intelligent coding assistant built with LangChain that can search the web, retrieve knowledge, generate structured responses, and save results locally.
+An intelligent tool-calling AI agent built with LangChain that can search the web, retrieve knowledge, generate structured coding assistance, and persist results locally.
 
-This project demonstrates a practical tool-calling AI agent architecture using modern LLM workflows.
+This project demonstrates a production-style LLM agent architecture using structured outputs, external tools, and environment-based configuration.
 
-Badges
-Python 3.9+ | LangChain | OpenAI API | Pydantic | Virtual Environment
-Overview
-
-The AI Coding Assistant can:
-
-Generate coding guidance and explanations
-
-Search the web using DuckDuckGo
-
-Retrieve information from Wikipedia
-
-Return structured output using Pydantic
-
-Save responses to a local file with timestamps
-
-Use environment variables for secure API handling
-
-Built using:
+Built with:
 
 LangChain
 
 OpenAI
 
+Why This Project?
+
+Most beginner AI projects only generate text.
+
+This project demonstrates:
+
+Tool orchestration
+
+Structured outputs (Pydantic)
+
+External knowledge retrieval
+
+Persistent storage
+
+Environment-based security
+
+Modular architecture
+
+This follows a real-world agent pattern:
+
+LLM + Tools + Validation + Persistence
+
+Features
+
+Coding assistance and summaries
+
+Web search (DuckDuckGo)
+
+Wikipedia knowledge retrieval
+
+Structured JSON output using Pydantic
+
+Save responses with timestamps
+
+Secure API key management using .env
+
+Modular and scalable design
+
+Architecture
+User Query
+     ↓
+LangChain Agent
+     ↓
+Tool Selection
+     ↓
+LLM Processing (OpenAI)
+     ↓
+Pydantic Output Validation
+     ↓
+Save to File
+
+Core Pattern:
+
+Retrieval + Knowledge + Memory
+
 Project Structure
 AI-Coding-Assistant/
 │
-├── main.py               # Main agent execution
+├── main.py               # Agent execution
 ├── sources.py            # Tools (search, wiki, save)
 ├── chathistory.txt       # Stored outputs
-├── .env                  # API keys (ignored in Git)
 ├── requirements.txt      # Dependencies
+├── .env                  # API keys (not committed)
 └── README.md
-Requirements
+Installation
+1. Clone Repository
+git clone https://github.com/your-username/AI-Coding-Assistant.git
+cd AI-Coding-Assistant
+2. Create Virtual Environment
 
-Python 3.9 or higher
-
-OpenAI API Key
-
-Get your API key:
-https://platform.openai.com/api-keys
-
-LangChain documentation:
-https://python.langchain.com/
-
-Step 1 — Create Virtual Environment
 Windows
+
 python -m venv venv
 venv\Scripts\activate
+
 Linux / Mac
+
 python3 -m venv venv
 source venv/bin/activate
-Why Virtual Environment?
+Why use a virtual environment?
 
-Keeps project dependencies isolated
+Isolates project dependencies
 
-Avoids version conflicts
+Prevents version conflicts
 
 Keeps system Python clean
 
-Makes the project portable and reproducible
+Makes the project reproducible
 
-Step 2 — Install Dependencies
+Professional Python development always uses virtual environments.
+
+3. Install Dependencies
 
 Create requirements.txt
 
@@ -81,12 +116,25 @@ wikipedia
 Install:
 
 pip install -r requirements.txt
-Step 3 — Environment Setup
+4. Setup Environment Variables
 
 Create a .env file:
 
 OPENAI_API_KEY=your_openai_api_key_here
-Step 4 — Run the Project
+
+Get your API key:
+
+https://platform.openai.com/api-keys
+
+OpenAI Platform:
+
+https://platform.openai.com/
+
+LangChain Documentation:
+
+https://python.langchain.com/
+
+Run the Project
 python main.py
 
 Then enter your query:
@@ -95,13 +143,13 @@ Enter what do you want to build:
 
 The agent will:
 
-Use tools if required
+Use tools if needed
 
 Generate structured output
 
 Save results to chathistory.txt
 
-Imports Used
+Imports Overview
 main.py
 from dotenv import load_dotenv
 from pydantic import BaseModel
@@ -114,50 +162,33 @@ sources.py
 from langchain_community.utilities import WikipediaAPIWrapper
 from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun, Tool
 from datetime import datetime
-Output Format
-
-The assistant returns structured data:
-
+Example Output
 {
-  topic: string
-  summary: string
-  sources: list
-  tool_used: list
+  topic: "Flask API",
+  summary: "Steps to build a Flask API...",
+  sources: ["Wikipedia", "Web Search"],
+  tool_used: ["search", "wiki"]
 }
-Architecture Flow
-
-User Input
-→ LangChain Agent
-→ Tool Selection
-→ LLM Processing
-→ Pydantic Validation
-→ File Storage
-
-This follows a practical pattern:
-
-Retrieval + Knowledge + Persistence
-
 Future Improvements
 
-Conversation memory
+Conversation memory (LangChain Memory)
 
 Error handling and retries
 
 Streaming responses
 
-Web interface (FastAPI / Streamlit)
+FastAPI or Streamlit interface
 
-Multi-model support
+Multi-model support (OpenAI + Anthropic)
+
+Vector database integration
 
 Use Cases
 
-Learning AI agent development
+Learning LangChain
 
-LangChain practice project
+AI portfolio project
 
-Prototype for larger AI applications
+Agent architecture reference
 
-
-“Why this project is different” section
-
-If you want, I can create a README V2 that looks like a top AI engineer’s repository — that will make your project stand out strongly.
+Prototype for AI applications
