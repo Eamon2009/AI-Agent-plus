@@ -1,4 +1,4 @@
-AI Coding Assistant Agent V2
+AI Coding Assistant Agent 
 
 An intelligent tool-calling AI agent built with LangChain that can search the web, retrieve knowledge, generate structured coding assistance, and persist results locally.
 
