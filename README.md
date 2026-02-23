@@ -34,9 +34,13 @@ A Python-based voice assistant that listens to user commands, performs system ta
 AI-Voice-Agent/
 │
 ├── main.py # Main voice assistant
+
 ├── sources.py # Custom tools (search, wiki, save)
+
 ├── requirements.txt
+
 ├── .env.example
+
 ├── README.md
 
 
@@ -55,12 +59,14 @@ cd AI-Voice-Agent
 Windows:
 
 python -m venv venv
+
 venv\Scripts\activate
 
 
 Mac/Linux:
 
 python3 -m venv venv
+
 source venv/bin/activate
 
 
