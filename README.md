@@ -1,203 +1,161 @@
-##AI Coding Assistant Agent     
+# AI Voice Agent
 
-An intelligent tool-calling AI agent built with LangChain that can search the web, retrieve knowledge, generate structured coding assistance, and persist results locally.
+A Python-based voice assistant that listens to user commands, performs system tasks, and uses a LangChain tool-calling agent for intelligent responses.
 
-This project demonstrates a production-style LLM agent architecture using structured outputs, external tools, and environment-based configuration.
+---
 
-Built with:
+## Features
 
-LangChain
+- Voice input using microphone
+- Text-to-speech response
+- Open websites by voice
+- Open Windows applications
+- Tell current time
+- AI responses using OpenAI via LangChain
+- Tool calling support (search, wiki, save)
 
-OpenAI
+---
 
-**Why This Project?**
+## How It Works
 
-This project demonstrates:
+1. User speaks through microphone
+2. Speech is converted to text
+3. System checks for:
+   - Website commands
+   - System commands
+4. If no system command is found:
+   - Query is sent to LangChain agent
+5. Agent processes the query using tools
+6. Response is spoken back to the user
 
-Tool orchestration
+---
 
-Structured outputs (Pydantic)
-
-External knowledge retrieval
-
-Persistent storage
-
-Environment-based security
-
-**Modular architecture**
-
-This follows a real-world agent pattern:
-
-LLM + Tools + Validation + Persistence
-
-**Features**
-
-Coding assistance and summaries
-
-Web search (DuckDuckGo)
-
-Wikipedia knowledge retrieval
-
-Structured JSON output using Pydantic
-
-Save responses with timestamps
-
-Secure API key management using .env
-
-Modular and scalable design
-
-**Architecture**
-User Query
-     ↓
-LangChain Agent
-     ↓
-Tool Selection
-     ↓
-LLM Processing (OpenAI)
-     ↓
-Pydantic Output Validation
-     ↓
-Save to File
-
-Core Pattern:
-
-Retrieval + Knowledge + Memory
-
-Project Structure
-AI-Coding-Assistant/
+## Project Structure
+AI-Voice-Agent/
 │
-├── main.py               # Agent execution
-├── sources.py            # Tools (search, wiki, save)
-├── chathistory.txt       # Stored outputs
-├── requirements.txt      # Dependencies
-├── .env                  # API keys (not committed)
-└── README.md
-Installation
-1. Clone Repository
-git clone https://github.com/Eamon2009/AI-Agent-plus.git
-cd AI-Coding-Assistant
-2. Create Virtual Environment
+├── main.py # Main voice assistant
+├── sources.py # Custom tools (search, wiki, save)
+├── requirements.txt
+├── .env.example
+├── README.md
 
-**Windows**
+
+---
+
+## Installation
+
+### 1. Clone Repository
+git clone https://github.com/Eamon2009/AI-Agent-plus.git
+
+cd AI-Voice-Agent
+
+
+### 2. Create Virtual Environment
+
+Windows:
 
 python -m venv venv
 venv\Scripts\activate
 
-**Linux / Mac**
+
+Mac/Linux:
 
 python3 -m venv venv
 source venv/bin/activate
-Why use a virtual environment?
 
-Isolates project dependencies
 
-Prevents version conflicts
+---
 
-Keeps system Python clean
+### 3. Install Dependencies
 
-Makes the project reproducible
-
-Python development always uses virtual environments.
-
-3. Install Dependencies
-
-Create requirements.txt
-
-langchain
-langchain-openai
-langchain-community
-pydantic
-python-dotenv
-duckduckgo-search
-wikipedia
-
-Install:
 
 pip install -r requirements.txt
 
-4. Setup Environment Variables
 
-Create a .env file:
+---
 
-OPENAI_API_KEY=your_openai_api_key_here
+### 4. Add API Key
 
-Get your API key:
+Rename `cofig.env` to `.env`
 
+Add your OpenAI API key:
+
+
+OPENAI_API_KEY=your_api_key
+
+
+Get your API key from:
 https://platform.openai.com/api-keys
 
-OpenAI Platform:
+---
 
-https://platform.openai.com/
+## Usage
 
-LangChain Documentation:
+Run the assistant:
 
-https://python.langchain.com/
 
-Run the Project
 python main.py
 
-Then enter your query:
 
-Enter what do you want to build:
+Say commands like:
 
-The agent will:
+- "Open YouTube"
+- "Open Google"
+- "What is the time"
+- "Open calculator"
+- "Explain Python loops"
+- "Stop"
 
-Use tools if needed
+---
 
-Generate structured output
+## Supported Commands
 
-Save results to chathistory.txt
+### Websites
+- YouTube
+- Google
+- Wikipedia
+- GitHub
+- Stack Overflow
 
-**Imports Overview**
-main.py
-from dotenv import load_dotenv
+### Windows Apps
+- Calculator
+- Notepad
+- Camera
 
-from pydantic import BaseModel
+### AI Mode
+Any other query is handled by the LangChain agent.
 
-from langchain_openai import ChatOpenAI
+---
 
-from langchain_core.prompts import ChatPromptTemplate
+## Tools Used
 
-from langchain_core.output_parsers import PydanticOutputParser
+- OpenAI GPT-3.5 via LangChain
+- SpeechRecognition
+- pyttsx3 (offline speech)
+- Custom tools:
+  - search_tool
+  - wiki_tool
+  - save_mth
 
-from langchain.agents import create_tool_calling_agent, AgentExecutor
+---
 
-from sources import search_tool, wiki_tool, save_mth
+## Notes
 
-sources.py
+- Microphone is required
+- Works best on Windows (uses SAPI5)
+- Ensure internet connection for AI responses
 
-from langchain_community.utilities import WikipediaAPIWrapper
+---
 
-from langchain_community.tools import WikipediaQueryRun, DuckDuckGoSearchRun, Tool
+## Future Improvements
 
-from datetime import datetime
+- Memory support
+- GUI interface
+- Wake word detection
+- Cross-platform support
 
-Example Output
-{
-  topic: "Flask API",
-  summary: "Steps to build a Flask API...",
-  sources: ["Wikipedia", "Web Search"],
-  tool_used: ["search", "wiki"]
-}
+---
 
-**Future Improvements**
+## License
 
-Conversation memory (LangChain Memory)
-
-Error handling and retries
-
-Streaming responses
-
-FastAPI or Streamlit interface
-
-Multi-model support (OpenAI + Anthropic)
-
-Vector database integration
-
-**Use Cases**
-
-Learning LangChain
-
-Agent architecture reference
-
-Prototype for AI applications
+MIT License
