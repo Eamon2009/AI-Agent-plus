@@ -6,3 +6,7 @@ langchain-anthropic
 python-dotenv
 pydantic
 duckduckgo-search
+speechrecognition
+pyttsx3
+pyaudio
+
